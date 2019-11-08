@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Reclamation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BackLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.typeRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.responseRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.etatRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataRec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.responseRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.etatRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataRec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReclamationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReclamationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReclamationId })
+        </td>
+    </tr>
+}
+
+</table>
+
+

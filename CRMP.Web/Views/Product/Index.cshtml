@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prodDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prodPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prodQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prodImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prodCat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodCat)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>
