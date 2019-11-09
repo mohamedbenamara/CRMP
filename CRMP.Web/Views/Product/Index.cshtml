@@ -1,63 +1,91 @@
-﻿@model IEnumerable<CRMP.Domain.Entities.Product>
+﻿@using PagedList 
+@using PagedList.Mvc 
+
+@model IPagedList<CRMP.Domain.Entities.Product>
+
+
+
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BackLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style="color:red;font-size:x-large">Liste des produits</h2>
+&nbsp;
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table id="datatable" class="table table-striped table-bordered" style="width:210%">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.prodName)
+            @Html.DisplayNameFor(model => model.First().prodImage)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().categorie)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prodDesc)
+            @Html.DisplayNameFor(model => model.First().prodName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prodPrice)
+            @Html.DisplayNameFor(model => model.First().prodDesc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prodQuantity)
+            @Html.DisplayNameFor(model => model.First().StoreId)
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prodImage)
+            @Html.DisplayNameFor(model => model.First().prodPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.prodCat)
+            @Html.DisplayNameFor(model => model.First().prodQuantity)
         </th>
-        <th></th>
+
+        <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodDesc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodQuantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodImage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prodCat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{string path = "~/Content/uploads/" + @item.prodImage;}
+
+                <img src="@Url.Content(path)" width="80" height="80" />
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.store.storeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodQuantity)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })|
+                @Html.ActionLink("Etat", "State", new { id = item.ProductId })
+
+            </td>
+        </tr>
+    }
 
 </table>
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.TwitterBootstrapPagerAligned )
+    </div>
+&nbsp;
+&nbsp;
+<a href="@Url.Action("Export","Product")"><i class="fa fa-file-pdf-o"></i> &nbsp; Exporter en PDF</a>

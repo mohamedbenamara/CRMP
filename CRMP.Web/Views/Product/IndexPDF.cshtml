@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Product>
+
+@{
+    Layout = null;
+}
+<iframe align="right" name="date du jour" id="date-du-jour" style="width:105px;height:75px;" src="https://www.mathieuweb.fr/calendrier/date-jour-blanc.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+
+<img src=@Url.Content("/Content/img/bg-img/telecom.jpg") alt="..." width="200" height="200" align="left">
+
+<h1 style="color:red;font-size:xx-large" align="center">Liste des produits</h1>
+<br /><br />
+<br />
+<table id="datatable" class="table table-striped table-bordered" style="border-color:brown ;width:100%" border="1">
+    <tr>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.prodImage)
+        </th>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.categorie)
+        </th>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.prodName)
+        </th>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.prodDesc)
+        </th>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.prodPrice)
+        </th>
+        <th style="color:black;font-size:large">
+            @Html.DisplayNameFor(model => model.prodQuantity)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{string path = "~/Content/uploads/" + @item.prodImage;}
+
+                <img src="@Url.Content(path)" style="width:80%;height:50%" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prodQuantity)
+            </td>
+            
+        </tr>
+    }
+
+</table>

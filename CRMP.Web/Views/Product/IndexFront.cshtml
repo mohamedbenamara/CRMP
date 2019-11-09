@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "IndexFront";
+    Layout = "~/Views/Shared/Front.cshtml";
+}
+
+<div class="post-catagory section-padding-100">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        @{string path = "~/Content/uploads/" + @item.prodImage;}
+
+                        <img src="@Url.Content(path)" />
+                        <!-- Content -->
+                        <div class="catagory-content-bg">
+                            <div class="catagory-content">
+                                <a href="#" class="post-tag">@item.categorie</a>
+                                <a href="#" class="post-title">@item.prodName</a>
+                                @Html.ActionLink(" Plus + ", "DetailsFront", new { id = item.ProductId })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div></div></div>

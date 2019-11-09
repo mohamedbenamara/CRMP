@@ -1,0 +1,36 @@
+﻿@model CRMP.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "DetailsFront";
+    Layout = "~/Views/Shared/Front.cshtml";
+}
+
+<<section class="post-news-area section-padding-100-0 mb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-9">
+                <div class="post-details-content mb-100">
+                    <div class="blog-thumbnail mb-50">
+                        @{string path = "~/Content/uploads/" + Model.prodImage;}
+
+                        <img src="@Url.Content(path)" style="width:350px; height:350px" />
+                    </div>
+                    <div class="blog-content">
+                        <h4 class="post-title">@Model.prodName</h4>
+                        <a href="#" class="post-tag">@Model.prodPrice</a>
+
+                        <a href="#" class="post-tag">@Model.prodQuantity</a>
+                        @*<div class="post-meta mb-50">
+                            <a href="#" class=""> @Html.DisplayFor(modelItem => Model.Heure_ouverture)</a>
+                            <a href="#" class=""> @Html.DisplayFor(modelItem => Model.Heure_fermeture)</a>
+                        </div>*@
+                        <p>@Model.prodDesc</p>
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Retour", "IndexFront")
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
