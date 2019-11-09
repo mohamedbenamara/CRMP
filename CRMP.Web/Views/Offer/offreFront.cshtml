@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Offer>
+
+@{
+    ViewBag.Title = "offreFront";
+    Layout = "~/Views/Shared/Front.cshtml";
+}
+
+
+
+
+
+
+<div class="catagory-post-area section-padding-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Post Area -->
+            <div class="col-12 col-lg-8 col-xl-9">
+                <!-- Single Blog Post -->
+                <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <!-- Blog Thumbnail -->
+                    <div class="blog-thumbnail">
+                        @{string path = "~/Content/UploadedFiles/" + @item.ImageOffer;}
+
+                        <img src="@Url.Content(path)" />
+
+                        <br> </br>
+
+                    </div>
+                            <!-- Blog Content -->
+                    <div class="blog-content">
+                        <br> </br>
+
+                        <a href="" class="post-tag">The Best</a>
+                       
+
+
+
+
+                        <a href="@Url.Action("Details", "Offer",new { id = item.OfferId })" class="post-title">
+
+                            @Html.DisplayFor(modelItem => item.offerName)
+                        </a>
+                    
+                        <div class="post-meta">
+                            <a href="#" class="post-date">
+                                @Html.DisplayFor(modelItem => item.offerType)
+                            </a>
+                            <a href="#" class="post-author">By TELECOM </a>
+                        </div>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.offerDesc) Nunc tristique justo id elit bibendum pharetra non vitae lectus.
+                            
+                            
+                         
+                        </p>
+                    </div>
+                        }
+                    }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+               
+
+
+

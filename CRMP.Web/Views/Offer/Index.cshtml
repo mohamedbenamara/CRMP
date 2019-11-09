@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Offer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BackLayout.cshtml";
+}
+
+
+
+ <h2>@Html.Display("affCount")</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<table id="datatable" class="table table-striped table-bordered" style="width:100%">*@
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageOffer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.offerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.offerDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.offerType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.offerprice)
+                </th>
+
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @{string path = "~/Content/UploadedFiles/" + @item.ImageOffer;}
+
+                    <img src="@Url.Content(path)" width="50" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.offerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.offerDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.offerType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.offerprice)
+                </td>
+
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OfferId }) |
+                
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OfferId })
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>

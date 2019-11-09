@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Pack>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BackLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped jambo_table bulk_action">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.packName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.packDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.packPrice)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfferId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.packImage)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.packName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.packDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.packPrice)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OfferId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+
+            <td>
+                @{string path = "~/Content/UploadedFiles/" + @item.packImage;}
+
+                <img src="@Url.Content(path)" width="70" height="70" />
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PackId }) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id = item.PackId })
+            </td>
+        </tr>
+    }
+
+</table>

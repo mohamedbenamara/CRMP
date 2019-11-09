@@ -1,0 +1,169 @@
+﻿@model CRMP.Domain.Entities.Offer
+
+@{
+               
+
+                ViewBag.Title = "Home";
+                Layout = "~/Views/Shared/Front.cshtml";
+}
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <h4>Offer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.offerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.offerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.offerDesc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.offerDesc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.offerprice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.offerprice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageOffer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImageOffer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.countAff)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.countAff)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OfferId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>*@
+
+<div class="hero-area">
+    <!-- Hero Post Slides -->
+    <div class="hero-post-slides owl-carousel">
+        <!-- Single Slide -->
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="#"><img src=@Url.Content("/Content/img/bg-img/1.jpg") alt=""></a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="#" class="post-tag">Healthy Food</a>
+                    <a href="#" class="post-title">Chicken Salad</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">July 11, 2018</a>
+                        <a href="#" class="post-author">By Julia Stiles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide -->
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="#">
+                    @{string path = "~/Content/UploadedFiles/" + @Model.ImageOffer;}
+
+                    <img src="@Url.Content(path)" alt=""/>
+
+
+
+
+
+                  
+                </a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="#" class="post-tag">Our best OFFERS</a>
+                    <a href="#" class="post-title">@Model.offerName</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">@Model.offerprice</a>
+                        <a href="#" class="post-author">By TELECOM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide -->
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="#"><img src=@Url.Content("/Content/img/bg-img/3.jpg") alt=""></a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="#" class="post-tag">Healthy Food</a>
+                    <a href="#" class="post-title">Chicken Salad</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">July 11, 2018</a>
+                        <a href="#" class="post-author">By Julia Stiles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide -->
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="#"><img src=@Url.Content("/Content/img/bg-img/3.jpg") alt=""></a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="#" class="post-tag">Healthy Food</a>
+                    <a href="#" class="post-title">Chicken Salad</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">July 11, 2018</a>
+                        <a href="#" class="post-author">By Julia Stiles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</html>

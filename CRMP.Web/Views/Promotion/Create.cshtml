@@ -1,0 +1,108 @@
+﻿@model CRMP.Domain.Entities.Promotion
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/backLayout2.cshtml";
+}
+
+<style>
+    .mybtn {
+        box-shadow: 1px 4px 14px -7px #276873;
+        background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        background-color: #599bb3;
+        border-radius: 29px;
+        border: 2px solid #29668f;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 7px 35px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #3d768a;
+        position: relative;
+        transition: .5s ease;
+        top: 20px;
+        top: 20px;
+        left: 270px;
+        right: -250px;
+        bottom: -20px;
+    }
+
+        .mybtn:hover {
+            background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+            background-color: #408c99;
+        }
+
+        .mybtn:active {
+            position: relative;
+            top: 1px;
+        }
+</style>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.promoDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.promoDesc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.promoDesc, "", new { @class = "text-danger" })
+            <br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.promoDateD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.promoDateD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.promoDateD, "", new { @class = "text-danger" })
+                <br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.promoDateF, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.promoDateF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.promoDateF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.promoPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.promoPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.promoPrice, "", new { @class = "text-danger" })
+                <br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, "ProductId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProductId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                <br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="mybtn" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
