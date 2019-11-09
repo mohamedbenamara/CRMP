@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CRMP.Domain.Entities.Commande>
+
+<img src="@Url.Content("~/Content/image/l.png")"  sizes="30px"/>
+<table class="table table-striped" align="center">
+    <tr align="center">
+        <th scope="row" align="center">
+            @Html.DisplayNameFor(model => model.q)
+        </th>
+
+        <th scope="row" align="center">
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th scope="row" align="center">
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th scope="row" align="center">
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th scope="row" align="center">
+            @Html.DisplayNameFor(model => model.etat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr scope="row" align="center">
+            <td>
+                @Html.DisplayFor(modelItem => item.q)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.prodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.etat)
+            </td>
+
+        </tr>
+    }
+
+</table>

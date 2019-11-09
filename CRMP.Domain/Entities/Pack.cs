@@ -16,9 +16,9 @@ namespace CRMP.Domain.Entities
         public string packPrice { get; set; }
         public string packImage { get; set; }
 
-        public int? ProductId { get; set; }
-        [ForeignKey("ProductId")]
-        public virtual User product { get; set; }
+        //public string ProductId { get; set; }
+        //[ForeignKey("ProductId")]
+        //public virtual User product { get; set; }
         public int? OfferId { get; set; }
         [ForeignKey("OfferId")]
         public virtual Offer offer { get; set; }

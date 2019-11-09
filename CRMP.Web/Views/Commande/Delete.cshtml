@@ -1,0 +1,76 @@
+﻿@model CRMP.Domain.Entities.Commande
+
+@{
+    /**/
+
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Front.cshtml";
+}
+<style type="text/css">
+
+    dl {
+        border: 3px double #ccc;
+        padding: 0.5em;
+    }
+
+    dt {
+        float: left;
+        clear:left ;
+        width: 250px;
+        text-align: center;
+        font-weight: bold;
+        color: green;
+    }
+
+        dt::after {
+            content: ":";
+        }
+
+    dd {
+        margin: 0 0 0 110px;
+        padding: 0 0 0.5em 0;
+    }
+    }
+</style>
+<h2 style="color:#4CAF50;"><center>Delete an order</center></h2>
+<br />
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.q)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.q)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <br />
+        <br />
+        <div class="form-actions no-color" align="center">
+            <input type="submit" value="Delete"class="btn btn-success" />
+
+        </div>
+        @Html.ActionLink("Back to List", "Index")
+    }
+</div>

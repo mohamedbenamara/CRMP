@@ -1,0 +1,61 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<CRMP.Domain.Entities.Commande>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Front.cshtml";
+}
+
+<h2 style="color:#4CAF50;"><center>Order List</center></h2>
+
+<p >
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" align="center">
+    <tr  align="center">
+        <th scope="row"  align="center">
+            @Html.DisplayNameFor(model => model.First().q)
+        </th>
+
+        <th scope="row"  align="center">
+            @Html.DisplayNameFor(model => model.First().ProductId)
+        </th>
+        <th scope="row"  align="center">
+            @Html.DisplayNameFor(model => model.First().total)
+        </th>
+        <th scope="row"  align="center">
+            @Html.DisplayNameFor(model => model.First().etat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr scope="row"  align="center">
+            <td>
+                @Html.DisplayFor(modelItem => item.q)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.prodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.etat)
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", "Commande", new { id = item.CommandeId })" class="btn btn-danger">Delete</a>
+                <a href="@Url.Action("Edit", "Commande", new { id = item.CommandeId })" class="btn btn-info">Edit</a>
+
+               
+            </td>
+        </tr>
+    }
+
+</table>
+<div align="center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+</div>

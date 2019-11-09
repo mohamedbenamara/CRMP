@@ -16,6 +16,7 @@ namespace CRMP.Domain.Entities
         public int prodQuantity { get; set; }
         public string prodImage { get; set; }
         public string prodCat { get; set; }
+        public virtual ICollection<Commande> Commandes { get; set; }
         public Product()
         {
 

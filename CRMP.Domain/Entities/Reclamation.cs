@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace CRMP.Domain.Entities
 {
     public class Reclamation
@@ -19,9 +18,9 @@ namespace CRMP.Domain.Entities
         public string etatRec { get; set; }
 
         public DateTime dataRec { get; set; }
-        public String userId { get; set; }
-       
-        public virtual User user { get; set; }
+        public string userId { get; set; }
+       // [ForeignKey("userId")]
+       // public virtual User user { get; set; }
 
         public Reclamation()
         {

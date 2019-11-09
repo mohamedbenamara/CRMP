@@ -20,12 +20,12 @@ namespace CRMP.Data
         public DbSet<Reclamation> Reclamations { get; set; }
 
         public DbSet<Commande> Commandes { get; set; }
-        public DbSet<Devis> Devis { get; set; }
+        //public DbSet<Devis> Devis { get; set; }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Pack> Packs { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<Ventes> Ventes { get; set; }
         public DbSet<Stand> Stands { get; set; }
         public DbSet<Agent> Agents { get; set; }
