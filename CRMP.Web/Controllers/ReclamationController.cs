@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace CRMP.Web.Controllers
 {
@@ -18,7 +19,18 @@ namespace CRMP.Web.Controllers
         // GET: Reclamation
         public ActionResult Index()
         {
-            return View(RS.GetAll());
+            return View(RS.GetAll().Where(rec=>rec.userId== User.Identity.Name));
+        }
+
+        // GET: Reclamation
+        public ActionResult afficherType()
+        {
+            List<string> TyperecList = new List<string>(3);
+            TyperecList.Add("technical branch");
+            TyperecList.Add("financial branch");
+            TyperecList.Add("relationelle");
+            return View();
+
         }
 
         // GET: Reclamation/Details/5
@@ -39,10 +51,16 @@ namespace CRMP.Web.Controllers
         {
             try
             {
-                reclam.userId = User.Identity.Name;
                 // TODO: Add insert logic here
-                RS.Add(reclam);
+                reclam.userId = User.Identity.Name;
+                User.Identity.GetUserId();
+;
 
+                reclam.etatRec = "Open";
+                RS.Update(reclam);
+               
+                RS.Add(reclam);
+                
                 RS.Commit();
 
              
@@ -58,6 +76,7 @@ namespace CRMP.Web.Controllers
         // GET: Reclamation/Edit/5
         public ActionResult Edit(int id)
         {
+           
             return View();
         }
 
