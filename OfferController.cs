@@ -11,7 +11,7 @@ using System.Net.Mail;
 using Microsoft.AspNet.Identity;
 using System.Speech.Synthesis;
 using System.Threading.Tasks;
-
+//kkk
 namespace CRMP.Web.Controllers
 {
     public class OfferController : Controller
